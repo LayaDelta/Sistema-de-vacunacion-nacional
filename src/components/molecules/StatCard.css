@@ -1,0 +1,120 @@
+.stat-card {
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Borde superior de acento ── */
+.stat-card__accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+.stat-card__accent--primary  { background: linear-gradient(90deg, #0ea5e9, #6366f1); }
+.stat-card__accent--accent   { background: linear-gradient(90deg, #10b981, #06b6d4); }
+.stat-card__accent--warning  { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+.stat-card__accent--danger   { background: linear-gradient(90deg, #ef4444, #f43f5e); }
+
+/* ── Brillo radial de fondo ── */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 10% 0%, rgba(14,165,233,.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(14,165,233,.15), 0 2px 8px rgba(0,0,0,.4);
+  border-color: rgba(14,165,233,.28);
+}
+
+/* ── Header ── */
+.stat-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.stat-card__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: rgba(14,165,233,.1);
+  border: 1px solid rgba(14,165,233,.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+/* Badge integrado como chip de tendencia */
+.stat-card__badge {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+
+/* ── Body ── */
+.stat-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stat-card__value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.stat-card__label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ── Footer / Progreso ── */
+.stat-card__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: var(--space-xs);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.stat-card__progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-card__progress-label {
+  font-size: 0.7rem;
+  color: var(--color-text-dim);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stat-card__progress-value {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}

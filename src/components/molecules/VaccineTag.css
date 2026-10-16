@@ -1,0 +1,80 @@
+.vaccine-tag {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 12px var(--space-md);
+  background: rgba(11,22,40,.7);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Borde izquierdo de color según status */
+.vaccine-tag::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  background: var(--color-border);
+  transition: background var(--transition-base);
+}
+.vaccine-tag:has(.badge--success)::before { background: #22c55e; }
+.vaccine-tag:has(.badge--warning)::before { background: #f59e0b; }
+.vaccine-tag:has(.badge--danger)::before  { background: #ef4444; }
+.vaccine-tag:has(.badge--neutral)::before { background: var(--color-text-dim); }
+
+.vaccine-tag:hover {
+  border-color: rgba(14,165,233,.3);
+  background: rgba(14,165,233,.04);
+  transform: translateX(2px);
+}
+
+/* ── Ícono de jeringa ── */
+.vaccine-tag__icon-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: rgba(14,165,233,.08);
+  border: 1px solid rgba(14,165,233,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vaccine-tag__icon {
+  width: 16px;
+  height: 16px;
+  stroke: var(--color-primary);
+}
+
+.vaccine-tag__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.vaccine-tag__name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vaccine-tag__doses {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+/* Badge ya no usa text-transform uppercase, se ve más limpio */
+.vaccine-tag .badge {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+}
